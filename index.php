@@ -21,34 +21,40 @@
                 $firstnameerr = "First name is required";
                 $flag = 0;
             }else{
-                $firstname = $_POST["first_name"];
+                $firstname = test_input($_POST["first_name"]);
             }
             if(empty($_POST["last_name"])){
                 $lastnameerr = "Last name is required";
                 $flag = 0;
             }else{
-                $lastname = $_POST["last_name"];
+                $lastname = test_input($_POST["last_name"]);
             }
             if(empty($_POST["email"])){
                 $emailerr = "E-mail is required";
                 $flag = 0;
             }else{
-                $email = $_POST["email"];
+                $email = test_input($_POST["email"]);
             }
             if(empty($_POST["dob"])){
                 $doberr = "DOB is required";
                 $flag = 0;
             }else{
-                $dob = $_POST["dob"];
+                $dob = test_input($_POST["dob"]);
             }
             if(empty($_POST["gender"])){
                 $gendererr = "Gender is required";
                 $flag = 0;
             }else{
-                $gender = $_POST["gender"];
+                $gender = test_input($_POST["gender"]);
             }
-            $comment = $_POST["comment"];
+            $comment = test_input($_POST["comment"]);
         }
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
     ?>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
